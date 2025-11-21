@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: #FFFFFF;
+  --color-background-soft: #F3F4F6;
+  --color-primary: #2563EB;
+  --color-secondary: #F97316;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  /* Ahora usamos Inter porque la cargamos en el Layout */
+  font-family: 'Inter', sans-serif; 
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global transitions */
+a, button {
+  transition: all 0.3s ease;
+}
+
+/* Animaciones de entrada (Scroll Reveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

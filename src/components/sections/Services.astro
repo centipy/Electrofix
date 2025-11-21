@@ -1,0 +1,74 @@
+---
+import CardService from "../ui/CardService.astro";
+
+const services = [
+  {
+    iconName: "refrigerator",
+    title: "Neveras",
+    problems: [
+      "No enfría o congela.",
+      "Hace ruidos extraños.",
+      "Fugas de agua.",
+      "Problemas con el dispensador.",
+    ],
+  },
+  {
+    iconName: "nevecon",
+    title: "Nevecones",
+    problems: [
+      "Fallas en el panel digital.",
+      "Producción de hielo irregular.",
+      "Secciones que no enfrían.",
+      "Rendimiento deficiente.",
+    ],
+  },
+  {
+    iconName: "washer",
+    title: "Lavadoras",
+    problems: [
+      "No desagua o centrifuga.",
+      "Vibraciones y ruidos fuertes.",
+      "Fugas de agua por debajo.",
+      "No inicia el ciclo de lavado.",
+    ],
+  },
+  {
+    iconName: "dryer",
+    title: "Secadoras / Lavasecas",
+    problems: [
+      "No calienta.",
+      "El tambor no gira.",
+      "Toma demasiado tiempo para secar.",
+      "Errores en el panel.",
+    ],
+  },
+];
+---
+
+<section id="servicios" class="py-20 md:py-32 bg-background-soft relative">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-50">
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/5 blur-3xl"></div>
+    <div class="absolute top-1/2 -left-24 w-72 h-72 rounded-full bg-secondary/5 blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-primary font-semibold tracking-wider uppercase text-sm mb-2 block">Nuestros Servicios</span>
+      <h2 class="text-4xl md:text-5xl font-extrabold text-text-primary mb-6">Soluciones Expertas para tu Hogar</h2>
+      <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+        Diagnóstico preciso y reparación garantizada para los electrodomésticos que mantienen tu hogar funcionando.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+      {services.map(service => (
+        <CardService
+          iconName={service.iconName}
+          title={service.title}
+          problems={service.problems}
+        />
+      ))}
+    </div>
+  </div>
+</section>

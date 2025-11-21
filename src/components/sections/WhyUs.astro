@@ -1,0 +1,50 @@
+---
+import Icon from "../ui/Icon.astro";
+
+const reasons = [
+  {
+    iconName: "certificate",
+    title: "Técnicos certificados",
+    description: "Nuestro equipo está altamente cualificado y certificado para las reparaciones más complejas.",
+  },
+  {
+    iconName: "wrench",
+    title: "Repuestos originales",
+    description: "Solo utilizamos piezas de la más alta calidad para garantizar la durabilidad de tu electrodoméstico.",
+  },
+  {
+    iconName: "money",
+    title: "Presupuesto gratis",
+    description: "Te ofrecemos un diagnóstico y presupuesto sin ningún costo ni compromiso.",
+  },
+  {
+    iconName: "shield",
+    title: "Garantía 6 meses",
+    description: "Cada reparación está respaldada por una garantía completa de 6 meses para tu tranquilidad.",
+  },
+];
+---
+
+<section id="porque-elegirnos" class="py-20 md:py-32 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <span class="text-secondary font-semibold tracking-wider uppercase text-sm mb-2 block">Nuestra Diferencia</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-text-primary mb-6">¿Por qué elegirnos?</h2>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        La elección inteligente para el cuidado de tus electrodomésticos. Calidad y confianza en cada visita.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {reasons.map((reason, index) => (
+        <div class="group p-8 rounded-2xl bg-background-soft hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 text-center">
+          <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform duration-300 text-primary group-hover:text-secondary">
+            <Icon name={reason.iconName} className="w-8 h-8" />
+          </div>
+          <h3 class="text-xl font-bold text-text-primary mb-3 group-hover:text-primary transition-colors">{reason.title}</h3>
+          <p class="text-text-secondary leading-relaxed">{reason.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

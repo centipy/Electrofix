@@ -1,0 +1,46 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  iconName: string;
+  title: string;
+  problems: string[];
+}
+
+const { iconName, title, problems } = Astro.props;
+---
+
+<div class="card group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center border border-gray-100 hover:border-primary/20 relative overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+  
+  <div class="icon-wrapper text-primary mb-6 transform group-hover:scale-110 transition-transform duration-300">
+    <Icon name={iconName} className="w-14 h-14 mx-auto" />
+  </div>
+  
+  <h3 class="text-2xl font-bold text-text-primary mb-4 group-hover:text-primary transition-colors">{title}</h3>
+  
+  <ul class="text-text-secondary space-y-3 text-left mb-6">
+    {problems.map(problem => (
+      <li class="flex items-start">
+        <span class="text-success mr-3 mt-1 flex-shrink-0">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+        </span>
+        <span class="text-sm">{problem}</span>
+      </li>
+    ))}
+  </ul>
+  
+  <a href="#contacto" class="inline-flex items-center justify-center w-full py-2 px-4 border border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-all duration-300 group-hover:shadow-md">
+    Cotizar reparación
+    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+  </a>
+</div>
+
+<style>
+  .card {
+    /* Removed custom border to use tailwind utility */
+  }
+  .icon-wrapper {
+    /* Removed custom color to use tailwind utility */
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+const faqData = [
+  {
+    question: "¿Cuánto tarda la visita del técnico?",
+    answer: "Nuestros técnicos suelen llegar en un plazo de 2 a 4 horas después de tu solicitud. La duración de la visita depende de la complejidad de la reparación, pero la mayoría se completan en menos de 90 minutos.",
+  },
+  {
+    question: "¿Hay algún cargo si el electrodoméstico no se puede reparar?",
+    answer: "No. Nuestro servicio de diagnóstico y presupuesto es completamente gratuito. Si decidimos que tu electrodoméstico no se puede reparar o que no vale la pena, no te cobraremos nada por la visita.",
+  },
+  {
+    question: "¿Qué marcas de electrodomésticos atienden?",
+    answer: "Atendemos una amplia gama de marcas líderes en el mercado, incluyendo Samsung, LG, Whirlpool, Mabe, Centrales, Electrolux y muchas más. Consulta con nuestro equipo si tienes una marca específica.",
+  },
+  {
+    question: "¿Cómo sé si vale la pena reparar mi electrodoméstico?",
+    answer: "Nuestro técnico te dará una evaluación honesta. Generalmente, si el costo de la reparación es menor al 50% del valor de un electrodoméstico nuevo y este tiene menos de 10 años, la reparación suele ser la opción más económica y sostenible.",
+  },
+    {
+    question: "¿La garantía de 6 meses cubre todas las partes?",
+    answer: "La garantía cubre tanto la mano de obra como los repuestos instalados durante la reparación. Si el mismo problema vuelve a ocurrir dentro de los 6 meses, lo solucionaremos sin costo adicional.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+---
+
+<section id="faq" class="py-20 md:py-32 bg-background-soft">
+  <div class="container mx-auto px-4 max-w-3xl">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-text-primary mb-4">Preguntas Frecuentes</h2>
+      <p class="text-lg text-text-secondary">
+        Resolvemos tus dudas antes de solicitar el servicio.
+      </p>
+    </div>
+    
+    <div class="space-y-4">
+      {faqData.map((item, index) => (
+        <details class="group bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-gray-100">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold text-text-primary select-none">
+            <span class="group-hover:text-primary transition-colors">{item.question}</span>
+            <span class="flex-shrink-0 ml-4 w-8 h-8 flex items-center justify-center rounded-full bg-background-soft group-hover:bg-primary/10 text-primary transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-text-secondary leading-relaxed animate-fade-in">
+            <p>{item.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  details[open] div {
+    animation: fadeIn 0.3s ease-out;
+  }
+</style>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

@@ -1,0 +1,34 @@
+---
+import Layout from "../components/layout/Layout.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
+import Testimonials from "../components/sections/Testimonials.astro"; // Importamos el nuevo componente
+import FAQ from "../components/sections/FAQ.astro";
+import Contact from "../components/sections/Contact.astro";
+---
+
+<Layout title="Electrofix | Reparación de Electrodomésticos en Medellín">
+    <Hero />
+    
+    <!-- Envolvemos las secciones en divs con la clase 'reveal' para la animación -->
+    <div class="reveal">
+        <Services />
+    </div>
+    
+    <div class="reveal">
+        <WhyUs />
+    </div>
+    
+    <div class="reveal">
+        <Testimonials />
+    </div>
+    
+    <div class="reveal">
+        <FAQ />
+    </div>
+    
+    <div class="reveal">
+        <Contact />
+    </div>
+</Layout>

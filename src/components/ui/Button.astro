@@ -1,0 +1,63 @@
+---
+interface Props {
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  className?: string;
+  [key: string]: any;
+}
+
+const { href, type = "button", className, ...rest } = Astro.props;
+
+const Element = href ? "a" : "button";
+---
+
+<Element
+  href={href}
+  type={!href ? type : undefined}
+  class:list={["button", className]}
+  {...rest}
+>
+  <slot />
+</Element>
+
+<style>
+  .button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .button:active {
+    transform: translateY(0);
+  }
+
+  .button.primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+  }
+
+  .button.primary:hover {
+    background-color: var(--color-primary-dark, #1e40af);
+  }
+
+  .button.secondary {
+    background-color: var(--color-secondary);
+    color: #ffffff;
+  }
+
+  .button.secondary:hover {
+    background-color: var(--color-secondary-dark, #c2410c);
+  }
+</style>

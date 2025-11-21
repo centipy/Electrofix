@@ -1,0 +1,146 @@
+---
+import FormInput from "../ui/FormInput.astro";
+---
+
+<section id="contacto" class="py-20 md:py-32 bg-white relative overflow-hidden">
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16">
+            <span class="text-primary font-semibold tracking-wider uppercase text-sm mb-2 block">Contáctanos</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-text-primary mb-4">
+                ¿Listo para solucionar el problema?
+            </h2>
+            <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+                Completa el formulario para enviarnos los detalles directamente a nuestro WhatsApp.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+            <!-- Formulario -->
+            <div class="bg-white p-8 md:p-10 rounded-3xl shadow-2xl border border-gray-100 relative">
+                <div class="absolute -top-10 -left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+                <div class="absolute -bottom-10 -right-10 w-20 h-20 bg-secondary/10 rounded-full blur-xl"></div>
+                
+                <form id="contact-form" class="space-y-6 relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <FormInput
+                            type="text"
+                            name="name"
+                            label="Nombre Completo"
+                            placeholder="Tu nombre"
+                            required
+                        />
+                        <FormInput
+                            type="tel"
+                            name="phone"
+                            label="Número de Teléfono"
+                            placeholder="300 123 4567"
+                            required
+                        />
+                    </div>
+                    
+                    <FormInput
+                        type="select"
+                        name="appliance"
+                        label="Tipo de Electrodoméstico"
+                        required
+                        options={[
+                            "Nevera",
+                            "Nevecon",
+                            "Lavadora",
+                            "Secadora / Lavaseca",
+                            "Otro",
+                        ]}
+                    />
+                    <FormInput
+                        type="textarea"
+                        name="message"
+                        label="Describe tu problema"
+                        placeholder="Ej: Mi nevera no enfría y hace un ruido raro."
+                        required
+                    />
+                    <button
+                        type="submit"
+                        class="w-full bg-success text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-green-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
+                    >
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16.75 13.96c.25.13.4.38.4.66v.38c0 .8-.6 1.4-1.33 1.49-.06 0-.13.01-.2.01-1.6 0-3.33-.6-4.9-2.1-1.6-1.5-2.2-3.3-2.1-4.9.01-.1.01-.16.02-.23.08-.73.68-1.33 1.49-1.33h.38c.28 0 .53.15.66.4.25.5.5.98.75 1.48.17.34.05.75-.24 1.04l-.5.5c.38.7 1.14 1.7 1.8 2.3l.1.1.1.1.6-.6c.28-.28.7-.4 1.03-.23.5.25 1 .5 1.48.75zM12 2a10 10 0 00-10 10c0 5.52 4.48 10 10 10 5.52 0 10-4.48 10-10A10 10 0 0012 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                        Enviar cotización por WhatsApp
+                    </button>
+                </form>
+            </div>
+
+            <!-- Info Card -->
+            <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 h-full flex flex-col overflow-hidden relative">
+                <div class="absolute -top-10 -right-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-20 h-20 bg-secondary/10 rounded-full blur-xl"></div>
+
+                <div class="p-8 md:p-10 relative z-10">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div>
+                             <h3 class="text-xl font-bold text-text-primary mb-4 flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 text-primary">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                                Horario
+                            </h3>
+                            <div class="space-y-2 pl-3 border-l-2 border-gray-100">
+                                <p class="text-text-secondary text-sm">Lunes a Sábado:<br/><span class="font-bold text-text-primary text-base">8:00 AM – 6:00 PM</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-text-primary mb-4 flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center mr-3 text-secondary">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                </div>
+                                Cobertura
+                            </h3>
+                            <div class="pl-3 border-l-2 border-gray-100">
+                                <p class="text-text-secondary text-sm leading-relaxed">Atendemos en todo <span class="font-bold text-text-primary">Medellín</span>, Envigado, Sabaneta, Itagüí y Bello.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-grow relative min-h-[300px] w-full">
+                    <!-- Mapa de Medellín -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63460.56226597659!2d-75.60273639392057!3d6.224283520206332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428dfb80fad05%3A0x42137cfcc7b53b56!2sMedell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1708393495832!5m2!1ses!2sco" 
+                        class="absolute inset-0 w-full h-full" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const form = document.getElementById("contact-form");
+    
+    form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        // Obtener los datos del formulario
+        const formData = new FormData(form as HTMLFormElement);
+        const data = Object.fromEntries(formData);
+        
+        // Construir el mensaje de WhatsApp
+        const message = `Hola Electrofix, solicito una cotización:%0A%0A` +
+            `*Nombre:* ${data.name}%0A` +
+            `*Teléfono:* ${data.phone}%0A` +
+            `*Equipo:* ${data.appliance}%0A` +
+            `*Problema:* ${data.message}`;
+            
+        // Tu número de teléfono
+        const phoneNumber = "573137510875";
+        
+        // Abrir WhatsApp
+        window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        
+        // Limpiar formulario (opcional)
+        (form as HTMLFormElement).reset();
+    });
+</script>

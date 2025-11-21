@@ -1,0 +1,46 @@
+---
+interface Props {
+  type: "text" | "tel" | "textarea" | "select";
+  name: string;
+  label: string;
+  placeholder?: string;
+  required?: boolean;
+  options?: string[];
+}
+
+const { type, name, label, placeholder, required = false, options } = Astro.props;
+const id = `${name}-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<div class="form-group">
+  <label for={id} class="block text-sm font-medium text-text-secondary mb-2">{label}</label>
+  {type === 'textarea' ? (
+    <textarea
+      id={id}
+      name={name}
+      placeholder={placeholder}
+      required={required}
+      rows="4"
+      class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-background-soft/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 placeholder-gray-400 text-text-primary"
+    />
+  ) : type === 'select' ? (
+    <div class="relative">
+      <select id={id} name={name} required={required} class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-background-soft/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 appearance-none text-text-primary cursor-pointer">
+        <option value="" disabled selected>{placeholder || 'Selecciona una opción'}</option>
+        {options?.map(option => <option value={option}>{option}</option>)}
+      </select>
+      <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-text-secondary">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </div>
+    </div>
+  ) : (
+    <input
+      type={type}
+      id={id}
+      name={name}
+      placeholder={placeholder}
+      required={required}
+      class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-background-soft/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 placeholder-gray-400 text-text-primary"
+    />
+  )}
+</div>

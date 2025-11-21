@@ -1,0 +1,113 @@
+---
+import Icon from "../ui/Icon.astro";
+import Button from "../ui/Button.astro";
+
+const navLinks = [
+  { href: "#inicio", text: "Inicio" },
+  { href: "#servicios", text: "Servicios" },
+  { href: "#porque-elegirnos", text: "Por qué elegirnos" },
+  { href: "#testimonios", text: "Testimonios" },
+];
+
+// Tu número real de WhatsApp
+const whatsappNumber = "573137510875";
+const whatsappMessage = "Hola Electrofix, necesito una cotización para reparar mi electrodoméstico.";
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+---
+
+<header id="main-header" class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+  <div class="container mx-auto flex items-center justify-between p-4">
+    <!-- LOGO ACTUALIZADO -->
+    <div class="logo flex items-center gap-2">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/images/logo.png" alt="Electrofix Logo" class="h-12 w-auto object-contain" />
+        <span class="sr-only">Electrofix</span> 
+      </a>
+    </div>
+
+    <nav class="hidden md:flex items-center space-x-6">
+      {navLinks.map(link => (
+        <a href={link.href} class="text-text-secondary hover:text-primary font-medium transition-colors duration-300">
+          {link.text}
+        </a>
+      ))}
+      <Button href="#contacto" className="primary">Solicitar Visita</Button>
+    </nav>
+
+    <div class="md:hidden">
+      <button id="menu-toggle" class="text-text-primary p-2" aria-label="Abrir menú">
+        <Icon name="menu" className="w-8 h-8" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+    <nav class="flex flex-col items-center space-y-4 p-6">
+      {navLinks.map(link => (
+        <a href={link.href} class="text-text-secondary hover:text-primary font-medium text-lg mobile-link">
+          {link.text}
+        </a>
+      ))}
+      <Button href="#contacto" className="primary w-full text-center">Solicitar Visita</Button>
+    </nav>
+  </div>
+</header>
+
+<!-- BOTÓN FLOTANTE CORREGIDO -->
+<a
+  href={whatsappLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:bg-[#20BA5C] hover:shadow-2xl transition-all duration-300 hover:scale-110 flex items-center group"
+  aria-label="Chatear por WhatsApp"
+>
+  <Icon name="whatsapp" className="w-8 h-8" />
+  <!-- El margen (ml-2) solo se aplica al hacer hover para evitar que se vea ovalado -->
+  <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-500 ease-in-out whitespace-nowrap font-bold">
+    ¡Hablemos ahora!
+  </span>
+</a>
+
+<style>
+  #main-header {
+    border-bottom: 1px solid var(--color-background-soft);
+  }
+  .logo a {
+    color: var(--color-primary);
+  }
+  nav a {
+    color: var(--color-text-secondary);
+  }
+  nav a:hover {
+    color: var(--color-primary);
+  }
+</style>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  menuToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    const icon = menuToggle.querySelector('div');
+    if (icon && mobileMenu) {
+       if (mobileMenu.classList.contains('hidden')) {
+         icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>`;
+       } else {
+         icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>`;
+       }
+    }
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+       const icon = menuToggle?.querySelector('div');
+       if(icon) {
+          icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>`;
+       }
+    });
+  });
+</script>
